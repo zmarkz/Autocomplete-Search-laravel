@@ -15,9 +15,18 @@ class HomeController extends BaseController {
 	|
 	*/
 
-	public function showWelcome()
-	{
-		return View::make('hello');
+
+
+	public function getItems(){
+		$input = Input::all();
+
+		return;	//return json data
+	}
+
+	public function getCategories(){
+		$input = Input::all();
+
+		return;	//return json data
 	}
 
 }

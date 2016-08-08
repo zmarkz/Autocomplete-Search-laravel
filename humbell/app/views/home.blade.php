@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>HomePage</title>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <script src="http://cdn.jsdelivr.net/typeahead.js/0.9.3/typeahead.min.js"></script>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha/css/bootstrap.min.css">
@@ -19,7 +21,7 @@
                         <input type="text" class="form-control" placeholder="Category"/>
                     </div>
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Item"/>
+                        <input type="text" class="form-contro" id="typeahead" placeholder="Item"/>
                     </div>
                 </div>
             </div>
@@ -27,4 +29,14 @@
     </form>
 </div>
 </body>
+<script type="text/javascript">
+
+    $('#typeahead').typeahead({
+        source: function (query, process) {
+            return $.get('{{ URL::Route("getItems") }}', { query: query }, function (data) {
+                return process(data.options);
+            });
+        }
+    });
+</script>
 </html>
