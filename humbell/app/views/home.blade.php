@@ -66,6 +66,7 @@
                     type : 'Get',
                     dataType: "json",
                     success: function( data ) {
+                        $('#itemData').empty();
                         $('#itemData').append("<p><b>"+data.name+" : </b>Rs. "+data.price+"</p>");
                     }
                 });
