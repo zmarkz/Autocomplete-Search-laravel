@@ -17,7 +17,7 @@
 <div style="margin-top: 20%;margin-left: 30%">
     <form class="form-horizontal">
         <div class="form-group">
-            <div class="col-xs-10">
+            <div class="col-xs-10" id="main-div">
                 <div class="form-inline">
                     <div class="form-group">
                         <input type="text" class="form-control category"  placeholder="Category"/>
@@ -25,6 +25,9 @@
                     <div class="form-group">
                         <input type="text" class="form-control items"  placeholder="Item"/>
                     </div>
+                </div>
+                <br>
+                <div id="itemData">
                 </div>
             </div>
         </div>
@@ -58,6 +61,15 @@
                 log( ui.item ?
                 ui.item.label :
                this.value);
+                $.ajax({
+                    url: "{{ URL::Route("getItemData") }}/"+ui.item.id,
+                    type : 'Get',
+                    dataType: "json",
+                    success: function( data ) {
+                        $('#itemData').append("<p><b>"+data.name+" : </b>Rs. "+data.price+"</p>");
+                    }
+                });
+
             },
             open: function() {
                 $( this ).removeClass( "ui-corner-all" ).addClass( "ui-corner-top" );

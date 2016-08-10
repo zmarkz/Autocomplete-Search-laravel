@@ -18,11 +18,11 @@ class HomeController extends BaseController {
 			array_push($parentIDs, $parentID);
 		}
 		$parents = $this->getAllChildrens($parentIDs);
-		$items = Items::select('name')->where('name','LIKE','%'.$query.'%')->whereIn('parentID', $parents)->get();
+		$items = Items::select('name','id')->where('name','LIKE','%'.$query.'%')->whereIn('parentID', $parents)->get();
 		$itemsArray = array();
 
 		foreach ($items as $item){
-			array_push($itemsArray, array("label"=>$item->name,"value"=>$item->name));
+			array_push($itemsArray, array("label"=>$item->name,"value"=>$item->name,"id"=>$item->id));
 		}
 		$result = Response::json($itemsArray);
 		return $result;
@@ -44,8 +44,6 @@ class HomeController extends BaseController {
 	public function getCategories(){
 		$input = Input::all();
 		$query = $input["query"];
-//		$items = DB::select(DB::raw('select name,id from categories WHERE NAME  LIKE "%'.$query.'%"'));
-
 		$items = Categories::select('name','id')->where('name','LIKE','%'.$query.'%')->get();
 		$itemsArray = array();
 
@@ -53,6 +51,12 @@ class HomeController extends BaseController {
 			array_push($itemsArray, array("label"=>$item->name,"value"=>$item->name,"id"=>$item->id));
 		}
 		$result = Response::json($itemsArray);
+		return $result;
+	}
+
+	public function getItemData($itemID){
+		$itemData = Items::select('name','price')->find($itemID);
+		$result = Response::json($itemData);
 		return $result;
 	}
 
