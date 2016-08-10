@@ -46,7 +46,7 @@
                     type : 'Get',
                     dataType: "json",
                     data: {
-                        q: request.term
+                        query: request.term
                     },
                     success: function( data ) {
                         response( data );
@@ -74,7 +74,7 @@
                     type : 'Get',
                     dataType: "json",
                     data: {
-                        q: request.term
+                        query: request.term
                     },
                     success: function( data ) {
                         response( data );
