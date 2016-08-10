@@ -2,6 +2,7 @@
 
 class HomeController extends BaseController {
 
+	//get all items correspondig category ID
 	public function getItems($parentID){
 		$input = Input::all();
 		$query = $input["query"];
@@ -28,6 +29,7 @@ class HomeController extends BaseController {
 		return $result;
 	}
 
+	//to get all children of correspondind categoryID
 	public function getAllChildrens($categoryIDs){
 		$nexteLevelChildren = Categories::select('id')->whereIn('parentID',$categoryIDs)->get();
 		$childrens = array();
@@ -41,6 +43,7 @@ class HomeController extends BaseController {
 		}
 	}
 
+	//category data
 	public function getCategories(){
 		$input = Input::all();
 		$query = $input["query"];
@@ -54,6 +57,7 @@ class HomeController extends BaseController {
 		return $result;
 	}
 
+	//item data
 	public function getItemData($itemID){
 		$itemData = Items::select('name','price')->find($itemID);
 		$result = Response::json($itemData);

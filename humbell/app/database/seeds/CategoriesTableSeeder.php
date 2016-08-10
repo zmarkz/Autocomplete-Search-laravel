@@ -3,6 +3,7 @@ class CategoriesTableSeeder extends Seeder {
 
     public function run()
     {
+        //to seed categories table
         DB::table('categories')->delete();
 
         $now = date('Y-m-d H:i:s');

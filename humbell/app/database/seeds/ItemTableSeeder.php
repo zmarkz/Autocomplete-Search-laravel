@@ -3,6 +3,7 @@ class ItemTableSeeder extends Seeder {
 
     public function run()
     {
+        //to seed items table
         DB::table('items')->delete();
 
         $now = date('Y-m-d H:i:s');
