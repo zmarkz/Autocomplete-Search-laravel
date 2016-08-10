@@ -54,23 +54,26 @@ composer create-project laravel/laravel {directory} 4.2 --prefer-dist
 ```
 ##### OR
 2- Clone the project
+
 3- Update composer -
 ```sh
 composer update
 ```
 4- Make changes for Database in - app/config/database.php
-5 - Create a db named 'humbell'.
-5- Run migrations to create tables -
+
+5- Create a db named 'humbell'. (No migration written for creating the db.)
+
+6- Run migrations to create tables -
 ```sh
 $ php artisan migrate
 ```
-6 - Run seeder to fill the tables using dummy data -
+7- Run seeder to fill the tables using dummy data -
 ```sh
 $ php artisan serve
 ```
-7 - Host the project -
+8- Host the project -
 ```sh
 $ php artisan serve --host=locahost --port=8008
 ```
-8-= Goto http://localhost:8008/ and you can access the project.
+9- Goto http://localhost:8008/ and you can access the project.
 
